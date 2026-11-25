@@ -1,15 +1,10 @@
-<<<<<<< Updated upstream
-// TODO
-=======
 import {
   createUserWithEmailAndPassword as firebaseCreateUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword as firebaseSignInWithEmailAndPassword,
   signOut as firebaseSignOut,
-  deleteUser as firebaseDeleteUser,
 } from '@react-native-firebase/auth';
-import { deleteUserData } from './databaseService';
 import type { User } from '@react-native-firebase/auth';
 
 type AuthModule = ReturnType<typeof getAuth>;
@@ -58,7 +53,7 @@ export function createUserWithEmailAndPassword(email: string, password: string) 
   if (!auth) {
     throw new Error('Firebase Auth native module is not ready. Please rebuild the app.');
   }
-  return firebaseCreateUserWithEmailAndPassword(auth, email, password); 
+  return firebaseCreateUserWithEmailAndPassword(auth, email, password);
 }
 
 export function signOut() {
@@ -68,16 +63,3 @@ export function signOut() {
   }
   return firebaseSignOut(auth);
 }
-
-export async function deleteUser() {
-  //dapatin user sama sekalian validasi yang didelete itu akun user diri sendiri
-  const user = getAuthSafe()?.currentUser;
-  if (!user) {
-    throw new Error('No user is signed in.');
-  }
-  //hapus data user
-  await deleteUserData(user.uid);
-  return firebaseDeleteUser(user);
-}
-
->>>>>>> Stashed changes

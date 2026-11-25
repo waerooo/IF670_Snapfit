@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-// TODO
-=======
 /**
  * Firebase Firestore database service for game sessions, user stats, and achievements.
  */
@@ -19,7 +16,6 @@ import {
   limit,
   serverTimestamp,
   runTransaction,
-  deleteDoc
 } from '@react-native-firebase/firestore';
 import type { QueryDocumentSnapshot, Transaction } from '@react-native-firebase/firestore';
 import type { GameSession, UserStats, Achievement } from '../../types';
@@ -225,12 +221,3 @@ export async function checkAndUnlockAchievements(
     return [];
   }
 }
-
-
-//---------------------- Account deletion ----------------------
-//function untuk delete data user (stats dan lain lainnya), di-export ke authService.tsx untuk digunakan dalam function deleteUser
-export async function deleteUserData (userId: string): Promise <void> {
-  //delete user data
-  await deleteDoc(doc(db, 'users', userId));
-}
->>>>>>> Stashed changes

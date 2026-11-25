@@ -78,6 +78,15 @@ android {
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.posedetectiongame"
+
+    // Fix: Windows path length limit (260 chars) for CMake object files
+    // Redirect .cxx build output to short path C:\cxx
+    externalNativeBuild {
+        cmake {
+            buildStagingDirectory "C:/cxx"
+        }
+    }
+
     defaultConfig {
         applicationId "com.posedetectiongame"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -111,9 +120,15 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 
+    // ML Kit Pose Detection
+    implementation("com.google.mlkit:pose-detection:18.0.0-beta5")
+    implementation("com.google.mlkit:pose-detection-accurate:18.0.0-beta5")
+
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
         implementation jscFlavor
     }
 }
+
+apply plugin: "com.google.gms.google-services"

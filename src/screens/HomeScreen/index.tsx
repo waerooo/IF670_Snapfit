@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
-// TODO
-=======
 import React from 'react';
 import {
-  Button,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -17,10 +13,9 @@ interface HomeScreenProps {
   email: string;
   onOpenProfile: () => void;
   onStartGame: () => void;
-  onOpenSettings: () => void;
 }
 
-function HomeScreen({ email, onOpenProfile, onStartGame, onOpenSettings }: HomeScreenProps) {
+function HomeScreen({ email, onOpenProfile, onStartGame }: HomeScreenProps) {
   const displayName = email.split('@')[0] || 'SnapFit';
   const avatarLetter = displayName.charAt(0).toUpperCase();
 
@@ -32,18 +27,6 @@ function HomeScreen({ email, onOpenProfile, onStartGame, onOpenSettings }: HomeS
             <Text style={styles.brandMarkText}>S</Text>
           </View>
           <Text style={styles.appName}>{SNAP_FIT_APP_NAME}</Text>
-          <View style={styles.settingsBox}>
-            <Pressable
-            accessibilityRole='button'
-            onPress={onOpenSettings}
-            testID='menu-settings'>
-              {({pressed}) => (
-                <Text style={[styles.settingsText, pressed && styles.settingsTextPressed]}>
-                  Settings
-                </Text>
-              )}
-            </Pressable>
-          </View>
         </View>
 
         <Text style={styles.greeting}>Halo, {displayName}!</Text>
@@ -160,22 +143,6 @@ const styles = StyleSheet.create({
   },
   chevron: { color: COLORS.textSecondary, fontSize: 28, marginLeft: 8 },
   pressed: { opacity: 0.82 },
-  settingsBox: {
-    flex: 1, /*fills up the rest available parent flexbox volume*/
-    flexDirection: 'row',
-    justifyContent: 'flex-end'
-  },
-  settingsText: {
-    color: COLORS.text,
-    fontSize: 16,
-    fontWeight: '500'
-  },
-  settingsTextPressed: {
-    color: COLORS.primary,
-    fontSize: 16,
-    fontWeight: '700'
-  },
 });
 
 export default HomeScreen;
->>>>>>> Stashed changes
