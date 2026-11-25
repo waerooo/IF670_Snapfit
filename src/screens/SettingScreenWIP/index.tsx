@@ -92,17 +92,8 @@ const SettingsScreenWIP: React.FC<SettingsScreenProps> = ({
       <ScrollView
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}>
-        <Text style={styles.sectionTitle}>Statistics</Text>
-        <View style={styles.statGrid}>
-          {MOCK_STATISTICS.map(stat => (
-            <View key={stat.label} style={styles.statCard}>
-              <Text style={styles.statLabel}>{stat.label}</Text>
-              <Text style={styles.statValue}>{stat.value}</Text>
-            </View>
-          ))}
-        </View>
 
-        <Text style={styles.sectionTitle}>Audio</Text>
+        <Text style={styles.sectionTitle}>Suara</Text>
         <View style={styles.card}>
           <SwitchRow
             label="Sound Effect"
@@ -116,7 +107,7 @@ const SettingsScreenWIP: React.FC<SettingsScreenProps> = ({
           />
         </View>
 
-        <Text style={styles.sectionTitle}>Account</Text>
+        <Text style={styles.sectionTitle}>Akun</Text>
         <View style={styles.accountButtons}>
           {/*tombol untuk nge-logout*/}
           <Button
@@ -127,12 +118,20 @@ const SettingsScreenWIP: React.FC<SettingsScreenProps> = ({
           />
           {/*tombol untuk buka modal untuk konfirmasi penghapusan data user*/}
           <Button
-            title="Delete User Data"
-            variant="destructive"
+            title="Hapus Data User"
+            variant="thickDestructiveDark"
+            onPress={() => setConfirmDelete(true)}
+            disabled = {isLoggingOut || isDeleting}
+          />
+          {/*tombol untuk buka modal untuk konfirmasi penghapusan data user*/}
+          <Button
+            title="Hapus Akun User"
+            variant="thickDestructive"
             onPress={() => setConfirmDelete(true)}
             disabled = {isLoggingOut || isDeleting}
           />
         </View>
+        
 
         <Text style={styles.footer}>SnapFit v1.0 · Kelompok 8</Text>
       </ScrollView>

@@ -8,11 +8,11 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import {PALETTE, RADIUS, SIZES, SPACING, TYPOGRAPHY} from '../../constants';
+import {COLORS, PALETTE, RADIUS, SIZES, SPACING, TYPOGRAPHY} from '../../constants';
 
 // 'outline' dipakai bila tombol berada di atas kartu terang (dialog), karena
 // warna 'secondary' sama dengan warna kartu dan akan menyatu dengan latarnya.
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'destructive';
+type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'destructive' | 'thickDestructive' | 'thickDestructiveDark';
 
 interface ButtonProps {
   title: string;
@@ -49,6 +49,16 @@ const VARIANTS: Record<
     rim: 'transparent',
     label: PALETTE.danger,
     border: PALETTE.danger,
+  },
+  thickDestructive: {
+    face: COLORS.dangerPrimary,
+    rim: COLORS.dangerSecondary,
+    label: COLORS.text,
+  },
+  thickDestructiveDark: {
+    face: COLORS.dangerSecondary,
+    rim: COLORS.dangerTertiary,
+    label: COLORS.text,
   },
 };
 
