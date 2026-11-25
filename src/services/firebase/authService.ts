@@ -4,8 +4,10 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword as firebaseSignInWithEmailAndPassword,
   signOut as firebaseSignOut,
+  deleteUser as firebaseDeleteUser,
 } from '@react-native-firebase/auth';
 import type { User } from '@react-native-firebase/auth';
+import { deleteUserData } from './databaseService';
 
 type AuthModule = ReturnType<typeof getAuth>;
 
@@ -62,4 +64,15 @@ export function signOut() {
     return Promise.resolve();
   }
   return firebaseSignOut(auth);
+}
+
+export async function deleteUser() {
+  //dapatin user sama sekalian validasi yang didelete itu akun user diri sendiri
+  const user = getAuthSafe()?.currentUser;
+  if (!user) {
+    throw new Error('No user is signed in.');
+  }
+  //hapus data user
+  await deleteUserData(user.uid);
+  return firebaseDeleteUser(user);
 }
