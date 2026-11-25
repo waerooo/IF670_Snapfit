@@ -13,9 +13,10 @@ interface HomeScreenProps {
   email: string;
   onOpenProfile: () => void;
   onStartGame: () => void;
+  onOpenSetting: () => void;
 }
 
-function HomeScreen({ email, onOpenProfile, onStartGame }: HomeScreenProps) {
+function HomeScreen({ email, onOpenProfile, onStartGame, onOpenSetting }: HomeScreenProps) {
   const displayName = email.split('@')[0] || 'SnapFit';
   const avatarLetter = displayName.charAt(0).toUpperCase();
 
@@ -27,6 +28,17 @@ function HomeScreen({ email, onOpenProfile, onStartGame }: HomeScreenProps) {
             <Text style={styles.brandMarkText}>S</Text>
           </View>
           <Text style={styles.appName}>{SNAP_FIT_APP_NAME}</Text>
+          <View style={styles.settingsBox}>
+            <Pressable
+            style={({pressed}) => [styles.settingsButtonDefault, pressed && styles.settingsButtonPressed]}
+            >
+              {({pressed}) => (
+                <Text style={[styles.settingsDefault, pressed && styles.settingsPressed]}>
+                  Settings
+                </Text>
+              )}
+            </Pressable>
+          </View>
         </View>
 
         <Text style={styles.greeting}>Halo, {displayName}!</Text>
@@ -143,6 +155,37 @@ const styles = StyleSheet.create({
   },
   chevron: { color: COLORS.textSecondary, fontSize: 28, marginLeft: 8 },
   pressed: { opacity: 0.82 },
+  settingsBox: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end'
+  },
+  settingsDefault: {
+    color: COLORS.text,
+    fontSize: 18,
+    fontWeight: '500',
+  },
+  settingsPressed: {
+    color: COLORS.primary,
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  settingsButtonDefault: {
+    minHeight: 40,
+    padding: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.primary,
+    borderRadius: 5
+  },
+  settingsButtonPressed: {
+    minHeight: 40,
+    padding: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.text,
+    borderRadius: 5
+  },
 });
 
 export default HomeScreen;
