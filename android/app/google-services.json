@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "861764792120",
+    "project_id": "pose-detection-game",
+    "storage_bucket": "pose-detection-game.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861764792120:android:f2dc2b7d78e55cc38adbcd",
+        "android_client_info": {
+          "package_name": "com.posedetectiongame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDl8Ko8T-FPDDWndIAtLH-ZcdkEmkRORzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
