@@ -223,7 +223,7 @@ export async function checkAndUnlockAchievements(
   }
 }
 
-//---------------------- Account deletion ----------------------
+//---------------------------------- Data deletion ----------------------------------
 //function untuk delete data user (stats dan lain lainnya), di-export ke authService.tsx untuk digunakan dalam function deleteUser
 export async function deleteUserData (userId: string): Promise <void> {
   //delete user data
