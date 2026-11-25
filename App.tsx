@@ -8,8 +8,9 @@ import LoginScreen from './src/screens/LoginScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import { observeAuthState } from './src/services/firebase/authService';
+import SettingsScreenWIP from './src/screens/SettingScreenWIP';
 
-type SignedInScreen = 'menu' | 'profile' | 'game';
+type SignedInScreen = 'menu' | 'profile' | 'game' | 'settings';
 
 interface ActiveUser {
   uid: string;
@@ -51,6 +52,11 @@ function App() {
     setSignedInScreen('menu');
   };
 
+  const handleAccountDelete = () => {
+    setUser(null);
+    setSignedInScreen('menu');
+  }
+
   return (
     <SafeAreaProvider>
       <StatusBar barStyle="light-content" />
@@ -70,11 +76,18 @@ function App() {
           userId={user.uid}
           onBackToMenu={() => setSignedInScreen('menu')}
         />
+      ) : user && signedInScreen === 'settings' ? (
+        <SettingsScreenWIP
+          onBack={() => setSignedInScreen('menu')}
+          onSignOut={handleSignOut}
+          onAccountDelete={handleAccountDelete}
+        />
       ) : user ? (
         <HomeScreen
           email={user.email}
           onOpenProfile={() => setSignedInScreen('profile')}
           onStartGame={() => setSignedInScreen('game')}
+          onOpenSetting={() => setSignedInScreen('settings')}
         />
       ) : showRegistration ? (
         <RegisterScreen onPressLogin={() => setShowRegistration(false)} />
