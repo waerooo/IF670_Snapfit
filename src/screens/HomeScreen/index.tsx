@@ -31,6 +31,7 @@ function HomeScreen({ email, onOpenProfile, onStartGame, onOpenSetting }: HomeSc
           <View style={styles.settingsBox}>
             <Pressable
             style={({pressed}) => [styles.settingsButtonDefault, pressed && styles.settingsButtonPressed]}
+            onPress={onOpenSetting}
             >
               {({pressed}) => (
                 <Text style={[styles.settingsDefault, pressed && styles.settingsPressed]}>
